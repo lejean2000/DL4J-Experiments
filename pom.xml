@@ -80,7 +80,7 @@
 				  <archive>
 				    <manifest>
 					<addClasspath>true</addClasspath>
-					<mainClass>com.mkyong.core.utils.App</mainClass>
+					<mainClass>com.divvid.ai.FashionMnistClassifier</mainClass>
 					<classpathPrefix>dependency-jars/</classpathPrefix>
 				    </manifest>
 				  </archive>
