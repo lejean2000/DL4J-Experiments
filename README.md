@@ -1,4 +1,4 @@
-# FashionMnistClassifier
+# Fashion Mnist Classifier with DL4J
 This code runs a simple model on the Fashion MNIST dataset. It assumes that the files of the dataset (train-images-idx3-ubyte, train-labels-idx1-ubyte, t10k-images-idx3-ubyte, and t10k-labels-idx1-ubyte) are downloaded in a folder, which is passed as args[0].
 Upon first run the UDX files are unpacked into PNGs automatically.
 
