@@ -15,9 +15,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.nd4j</groupId>
-			<!-- Use nd4j-native-platform for CPU and nd4j-cuda-8.0-platform or nd4j-cuda-9.2-platform 
-				for GPU -->
-			<!-- Note: Some use-cases (like Word2Vec work better with CPU) -->
+			<!-- Use nd4j-native-platform for CPU and nd4j-cuda-8.0-platform or nd4j-cuda-9.2-platform for GPU -->
 			<artifactId>nd4j-native</artifactId>
 			<version>${dl4j.version}</version>
 		</dependency>
@@ -69,6 +67,44 @@
 						<version>6.2</version>
 					</dependency>
 				</dependencies>
+			</plugin>
+			<!-- Make this jar executable -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+				  <excludes>
+					<exclude>**/log4j.properties</exclude>
+				  </excludes>
+				  <archive>
+				    <manifest>
+					<addClasspath>true</addClasspath>
+					<mainClass>com.mkyong.core.utils.App</mainClass>
+					<classpathPrefix>dependency-jars/</classpathPrefix>
+				    </manifest>
+				  </archive>
+				</configuration>
+			</plugin>
+
+			<!-- Copy project dependency -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.1.1</version>
+				<executions>
+				  <execution>
+					<id>copy-dependencies</id>
+					<phase>package</phase>
+					<goals>
+						<goal>copy-dependencies</goal>
+					</goals>
+					<configuration>
+					  <!-- exclude junit, we need runtime dependency only -->
+					  <includeScope>runtime</includeScope>
+					  <outputDirectory>${project.build.directory}/dependency-jars/</outputDirectory>
+					</configuration>
+				  </execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
