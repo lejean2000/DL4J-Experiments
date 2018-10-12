@@ -65,7 +65,7 @@ public class FashionMnistClassifier {
             config.put("height", Integer.parseInt(prop.getProperty("height")));
             config.put("width", Integer.parseInt(prop.getProperty("width")));
             config.put("channels", Integer.parseInt(prop.getProperty("channels")));
-            config.put("outputNum", Integer.parseInt(prop.getProperty("outputNum")));// 10 categories of clothes
+            config.put("outputNum", Integer.parseInt(prop.getProperty("outputNum")));
             config.put("batchSize", Integer.parseInt(prop.getProperty("batchSize")));
             config.put("nEpochs", Integer.parseInt(prop.getProperty("nEpochs")));
             
@@ -74,6 +74,10 @@ public class FashionMnistClassifier {
         }
     }
     
+    /**
+     * This is just a sample network. It won't achieve breakthrough results.
+     * @return
+     */
     public static MultiLayerNetwork getModel(){  
         var builder = new NeuralNetConfiguration.Builder()
                 .seed(seed)
@@ -159,7 +163,7 @@ public class FashionMnistClassifier {
             String path;
             for(int i = 0; i < numberOfImages; i++) {
 
-                if(i % 100 == 0) {log.info("Number of images extracted: {}",i);}
+                if(i % 1000 == 0) {log.info("Number of images extracted: {}",i);}
 
                 for(int p = 0; p < numberOfPixels; p++) {
                     int gray = 255 - inImage.read();
